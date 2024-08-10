@@ -14,6 +14,11 @@ export class PhotosStack extends cdk.Stack {
         });
 
         (myBucket.node.defaultChild as CfnBucket).overrideLogicalId("PhotoBucketnewlogicalid123456")
+
+        new cdk.CfnOutput(this, 'photos-bucket', {
+            value: myBucket.bucketArn,
+            exportName: 'photos-bucket'
+        })
     }
 
     private initializeSuffix() {
